@@ -9,48 +9,50 @@ struct bop{
 int main()
 {
 	using namespace std;
-	cout<<"Benevolent Order of Programmers Report\n"
-	<<"a.display by name\t\t\tb.display by title\n"
-	<<"c.display by bopname\t\t\td.diplay by preference\n"
+	cout<<"BenevolentOrderofProgrammersReport\n"
+	<<"a.displaybyname
+	b.displaybytitle\n"
+	<<"c.displaybybopname
+	d.diplaybypreference\n"
 	<<"q.quit\n";
 	char ch;
 	bopmember[5]={
-		{"Wimp Macho","English Teacher","DEMON",0},
-		{"Raki Rhodes","Junior Programmer","BOOM",1},
-		{"Celia Laiter","Super Star","MIPS",2},
-		{"Hoppy Hipman","Analyst Trainee","WATEE",1},
-		{"Pat Hand","Police","LOOPY",2}
+		{"WimpMacho","EnglishTeacher","DEMON",0},
+		{"RakiRhodes","JuniorProgrammer","BOOM",1},
+		{"CeliaLaiter","SuperStar","MIPS",2},
+		{"HoppyHipman","AnalystTrainee","WATEE",1},
+		{"PatHand","Police","LOOPY",2}
 	};
-	cout<<"Enter your choice:";
+	cout<<"Enteryourchoice:";
 	while(cin>>ch&&ch!='q')
 	{
 		switch(ch)
 		{
 			case 'a':
-                for(int i=0;i<5;i++)
-                    cout<<member[i].fullname<<endl;
-                break;
+			for(inti=0;i<5;i++)
+			cout<<member[i].fullname<<endl;
+			break;
 			case 'b':
-                for(int i=0;i<5;i++)
-                    cout<<member[i].title<<endl;
-                break;
+			for(inti=0;i<5;i++)
+			cout<<member[i].title<<endl;
+			break;
 			case 'c':
-                for(int i=0;i<5;i++)
-                    cout<<member[i].bopname<<endl;
-                break;
+			for(inti=0;i<5;i++)
+			cout<<member[i].bopname<<endl;
+			break;
 			case 'd':
-                for(int i=0;i<5;i++)
-                {
-                    if(member[i].preference==0)
-                        cout<<member[i].fullname<<endl;
-                    else if(member[i].preference==1)
-                        cout<<member[i].title<<endl;
-                    else if(member[i].preference==2)
-                        cout<<member[i].bopname<<endl;
-                }
-                break;
+			for(inti=0;i<5;i++)
+			{
+				if(member[i].preference==0)
+				cout<<member[i].fullname<<endl;
+				elseif(member[i].preference==1)
+				cout<<member[i].title<<endl;
+				elseif(member[i].preference==2)
+				cout<<member[i].bopname<<endl;
+			}
+			break;
 		}
-		cout<<"Next choice:";
+		cout<<"Nextchoice:";
 	}
 	cout<<"Bye!\n";
 	return 0;
