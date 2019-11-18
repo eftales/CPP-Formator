@@ -19,3 +19,6 @@ python cppformator.py
 This project will be maintained for a long time.
 
 本项目将长期维护。
+
+# 之后的工作
+目前的 if elif 形式的实现很 low 而且低效，之后可能会改成字典的实现形式。
