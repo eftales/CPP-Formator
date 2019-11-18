@@ -2,77 +2,83 @@
 # types 表示支持的数据类型
 types = ["int","char","double","return","struct","case",
         "constint","usingnamespace","string","elseif",
-        "ifstream","ofstream","void","float","long","long long"]
+        "ifstream","ofstream","void","float","long","long long",
+        "unsigned"]
 
 tab_count = 0
 case_diff = 0
 
 def add_space(line):
     new_line = list(line)
+    current_type = None
 
     if (line[0] == 'c'):
-        if (line[0:4] == "char" ): 
-            new_line.insert(4,' ')
-        if (line[0:4] == "case"):
-            new_line.insert(4,' ')
+        if (line[0:len("char")] == "char" ): 
+            current_type = "char"
+        if (line[0:len("case")] == "case"):
+            current_type = "case"
 
-        elif (line[0:5] == "const"):
-            new_line.insert(5,' ')
-            if (line[5:8] == "int"):
-                new_line.insert(9,' ') # 因为已经插入一个 " " 了，所以要往后多移一位
+        elif (line[0:len("const")] == "const"):
+            current_type = "const"
 
     elif (line[0] == 'd'):
-        if (line[0:6] == "double"):
-            new_line.insert(6,' ')
+        if (line[0:len("double")] == "double"):
+            current_type = "double"
 
     elif (line[0] == 'e'):
-        if (line[0:6] == "elseif"):
-            new_line.insert(4,' ')
+        if (line[0:len("elseif")] == "elseif"):
+            current_type = "elseif"
 
     elif (line[0] == 'f'):
-        if (line[0:5] == "float"):
-            new_line.insert(5,' ')
+        if (line[0:len("float")] == "float"):
+            current_type = "float"
+        elif (line[0:len("for(")] == "for("):
+            current_type = "for("
 
     elif (line[0] == 'i'):
-        if (line[0:3] == "int"):
-            new_line.insert(3,' ')       
-        if (line[0:8] == "ifstream"):
-            new_line.insert(8,' ')       
+        if (line[0:len("int")] == "int"):
+            current_type = "int"    
+        if (line[0:len("ifstream")] == "ifstream"):
+            current_type = "ifstream"       
 
     elif (line[0] == 'l'):
-        if (line[0:4] == "long"):
-            new_line.insert(4,' ')
-            new_line[5:] = add_space(''.join(new_line[5:]))
+        if (line[0:len("long")] == "long"):
+            current_type = "long"    
+
+
+    elif (line[0] == 'n'):
+        if (line[0:len("namespace")] == "namespace"):
+            current_type = "namespace"   
 
     elif (line[0] == 'o'):
-        if (line[0:8] == "ofstream"):
-            new_line.insert(8,' ')
+        if (line[0:len("ofstream")] == "ofstream"):
+            current_type = "ofstream"   
 
             
     elif (line[0] == 'r'):
-        if (line[0:6] == "return"):
-            new_line.insert(6,' ')
-
-
-
+        if (line[0:len("return")] == "return"):
+            current_type = "return"   
 
 
     elif (line[0] == 's'):
-        if (line[0:6] == "struct"):
-            new_line.insert(6,' ')
-        if (line[0:6] == "string"):
-            new_line.insert(6,' ')
+        if (line[0:len("struct")] == "struct"):
+            current_type = "struct"   
+        if (line[0:len("string")] == "string"):
+            current_type = "string" 
+
     elif (line[0] == 'u'):
-        if (line[0:14] == "usingnamespace"):
-            new_line.insert(5,' ')
-            new_line.insert(15,' ')
-
-
+        if (line[0:len("using")] == "using"):
+            current_type = "using" 
+        if (line[0:len("unsigned")] == "unsigned"):
+            current_type = "unsigned" 
 
     elif (line[0] == 'v'):
-        if (line[0:4] == "void"):
-            new_line.insert(4,' ')
+        if (line[0:len("void")] == "void"):
+            current_type = "void" 
 
+    if (current_type != None):
+        new_line[len(current_type):] = add_space(''.join(new_line[len(current_type):]))
+        new_line.insert(len(current_type),' ')
     return new_line
 
 with open("new.cpp","w",encoding='UTF-8') as nf:
