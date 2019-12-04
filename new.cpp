@@ -1,5 +1,5 @@
 #include<iostream>
-const int strsize=20;
+constint strsize=20;
 struct bop{
 	char fullname[strsize];
 	char title[strsize];
@@ -8,7 +8,7 @@ struct bop{
 };
 int main()
 {
-	using namespace std;
+	usingnamespace std;
 	cout<<"BenevolentOrderofProgrammersReport\n"
 	<<"a.displaybyname
 	b.displaybytitle\n"
@@ -45,9 +45,9 @@ int main()
 			{
 				if(member[i].preference==0)
 				cout<<member[i].fullname<<endl;
-				elseif(member[i].preference==1)
+				elseif ( member[i].preference==1)
 				cout<<member[i].title<<endl;
-				elseif(member[i].preference==2)
+				elseif ( member[i].preference==2)
 				cout<<member[i].bopname<<endl;
 			}
 			break;
