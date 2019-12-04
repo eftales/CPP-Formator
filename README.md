@@ -3,6 +3,8 @@ When the code is pasted from the PDF, the indentation and the space are often go
 
 当从 PDF 中把代码粘贴过来的时候，往往缩进空格什么的都没了，本代码可以在一定程度上修复这个问题。
 
+目前可以修复的有：各种类型，各种关键字，自定义类。
+
 # How to use
 ## requests
 - python3.*
@@ -21,4 +23,7 @@ This project will be maintained for a long time.
 本项目将长期维护。
 
 # 之后的工作
-目前的 if elif 形式的实现很 low 而且低效，之后可能会改成字典的实现形式。
+多文件处理。
+
+# 不足
+每一行都需要遍历一次 types 的 list，效率过低。暂时没有想过要改进，因为目前处理一个文件需要的时间可能只有几十毫秒吧，没有改进的必要。
