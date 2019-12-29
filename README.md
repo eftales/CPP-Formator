@@ -5,6 +5,7 @@ When the code is pasted from the PDF, the indentation and the space are often go
 
 目前可以修复的有：各种类型，各种关键字，自定义类。
 
+推荐搭配 iStylePDF 使用，虽然我觉得 Oxdo PDF 很好用。。
 # How to use
 ## requests
 - python3.*

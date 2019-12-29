@@ -9,31 +9,32 @@ types = [
 
         "bool",
         "char","case","const","class",
-        "double",
+        "double","delete",
         "else","explicit","enum",
         "float","friend",
 
 
 
-        "ifstream","int",
+        "ifstream","int","inline",
 
 
         "long","longlong",
 
         "namespace","new",
         "ofstream","operator",
+        "public","private","protected",
 
 
         "return",
         "struct","string","static",
-        "typedef",
+        "typedef","typename",
         "using","unsigned",
         "void","virtual",
         
         
         
 
-        ":",
+        "::",
         r"#ifndef",r"#define"
         
         ]
@@ -69,10 +70,10 @@ def add_space_v4(line):
             end_index = min(start_index + len(each_type),end_index)
 
     if (end_index != MAX_LEN):
-        if line[0:end_index] == "class": # class 必须写在行首
+        if line[(end_index-len("class")):end_index] == "class" or line[(end_index-len("typename")):end_index] == "typename" : # class 不必写在行首
             self_defined_class_name_list = []
             for each in line[end_index:-1]:
-                if 'a' <= each <= 'z' or 'A' <= each <= 'Z':
+                if 'a' <= each <= 'z' or 'A' <= each <= 'Z' or '0' <= each <= "9" or each == "_":
                     self_defined_class_name_list.append(each)
                 else:
                     break
